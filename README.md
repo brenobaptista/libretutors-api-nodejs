@@ -10,12 +10,9 @@ all the tutors. It also contains the model for the tutors.
 
 # For the future
 
-In the future, I will create a new version only for the pupils and
-leave this version for managing the tutors (I will migrate the
-search algorithm from here to there).
-
-I'll also implement an authentication algorithm for both versions 
-so I can use it in the front end.
+In the future, I will create the CRUD and model for the pupils and 
+I'll also implement an authentication algorithm so I can use it in 
+the front end (login screen).
 
 # How can I contribute to this open-source project?
 
