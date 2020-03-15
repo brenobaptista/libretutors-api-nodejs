@@ -55,7 +55,7 @@ API URL: not deployed to Heroku yet
 ### Schemas:
 
 ```
-Tutors: name, bio, avatar_url, subjects, latitude, longitude, email
+Tutors: name, bio, avatarUrl, subjects, latitude, longitude, email
 Georeferencing: latitude, longitude, subjects (get from Tutors)
 ```
 

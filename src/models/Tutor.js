@@ -1,32 +1,32 @@
-const mongoose = require("mongoose");
-const PointSchema = require("./utils/PointSchema");
+const mongoose = require('mongoose');
+const PointSchema = require('./utils/PointSchema');
 
 const TutorSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   bio: {
     type: String,
-    required: true
+    required: true,
   },
-  avatar_url: {
+  avatarUrl: {
     type: String,
-    required: true
+    required: true,
   },
   subjects: {
     type: [String],
-    required: true
+    required: true,
   },
   location: {
     type: PointSchema,
-    index: "2dsphere",
-    required: true
+    index: '2dsphere',
+    required: true,
   },
   email: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
-module.exports = mongoose.model("Tutor", TutorSchema);
+module.exports = mongoose.model('Tutor', TutorSchema);

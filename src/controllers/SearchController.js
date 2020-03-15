@@ -1,5 +1,5 @@
-const Tutor = require("../models/Tutor");
-const parseStringAsArray = require("../utils/parseStringAsArray");
+const Tutor = require('../models/Tutor');
+const parseStringAsArray = require('../utils/parseStringAsArray');
 
 module.exports = {
   async index(req, res) {
@@ -9,19 +9,19 @@ module.exports = {
 
     const tutors = await Tutor.find({
       subjects: {
-        $in: subjectsArray
+        $in: subjectsArray,
       },
       location: {
         $near: {
           $geometry: {
-            type: "Point",
-            coordinates: [longitude, latitude]
+            type: 'Point',
+            coordinates: [longitude, latitude],
           },
-          $maxDistance: 10000
-        }
-      }
+          $maxDistance: 10000,
+        },
+      },
     });
 
     return res.json({ tutors });
-  }
+  },
 };

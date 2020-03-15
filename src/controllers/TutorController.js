@@ -1,6 +1,6 @@
-const Tutor = require("../models/Tutor");
-const parseStringAsArray = require("../utils/parseStringAsArray");
-const parseCoordinatesAsLocation = require("../utils/parseCoordinatesAsLocation");
+const Tutor = require('../models/Tutor');
+const parseStringAsArray = require('../utils/parseStringAsArray');
+const parseCoordinatesAsLocation = require('../utils/parseCoordinatesAsLocation');
 
 module.exports = {
   async index(req, res) {
@@ -13,11 +13,11 @@ module.exports = {
     const {
       name,
       bio,
-      avatar_url,
+      avatarUrl,
       subjects,
       latitude,
       longitude,
-      email
+      email,
     } = req.body;
 
     let tutor = await Tutor.findOne({ email });
@@ -30,14 +30,14 @@ module.exports = {
       tutor = await Tutor.create({
         name,
         bio,
-        avatar_url,
+        avatarUrl,
         subjects: subjectsArray,
         location,
-        email
+        email,
       });
     } else {
       return res.send({
-        message: "Tutor already exists!"
+        message: 'Tutor already exists!',
       });
     }
 
@@ -48,31 +48,27 @@ module.exports = {
     const {
       name,
       bio,
-      avatar_url,
+      avatarUrl,
       subjects,
       latitude,
       longitude,
-      email
+      email,
     } = req.body;
 
-    let editedTutor = await Tutor.findById(req.params.id);
+    const editedTutor = await Tutor.findById(req.params.id);
 
     if (subjects) {
       const subjectsArray = parseStringAsArray(subjects);
       editedTutor.subjects = subjectsArray;
-    } else {
-      editedTutor.subjects = editedTutor.subjects;
     }
 
     if (latitude && longitude) {
       const location = parseCoordinatesAsLocation(longitude, latitude);
       editedTutor.location = location;
-    } else {
-      editedTutor.location = editedTutor.location;
     }
 
     editedTutor.name = name || editedTutor.name;
-    editedTutor.avatar_url = avatar_url || editedTutor.avatar_url;
+    editedTutor.avatarUrl = avatarUrl || editedTutor.avatarUrl;
     editedTutor.bio = bio || editedTutor.bio;
     editedTutor.email = email || editedTutor.email;
 
@@ -85,5 +81,5 @@ module.exports = {
     const deletedTutor = await Tutor.findByIdAndDelete(req.params.id);
 
     return res.json({ message: `Tutor deleted: ${deletedTutor.name}` });
-  }
+  },
 };
