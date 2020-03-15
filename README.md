@@ -24,7 +24,7 @@
 
 * Sign up and Login
 * Pusher Chatkit
-* Unit Testing (Jest+Enzyme)
+* Unit Testing (Jest)
 
 ## Documentation
 
