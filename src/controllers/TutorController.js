@@ -37,7 +37,7 @@ module.exports = {
       });
     } else {
       return res.send({
-        message: "User already exists!"
+        message: "Tutor already exists!"
       });
     }
 
